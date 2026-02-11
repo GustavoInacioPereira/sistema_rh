@@ -21,8 +21,8 @@
     <li>
         Formatação de saída com printf (2 casas decimais).
     </li>
-    <p>Conceitos aplicados: Variáveis, Arrays, Condicionais e Sintaxe Java 25.</p>
 </ul>
+<p>Conceitos aplicados: Variáveis, Arrays, Condicionais e Sintaxe Java 25.</p>
 
 <h3>v1.1 - Tratamento de Erros:</h3>
 
@@ -32,6 +32,24 @@
     </li>
     <li>
         O sistema agora solicita a reentrada de dados de forma interativa até que um ID válido seja inserido.
-    </li>
-    <p>Conceitos aplicados: Estruturas de Repetição</p>
+    </li>   
 </ul>
+ <p>Conceitos aplicados: Estruturas de Repetição</p>
+
+<h3>v2.0 - Refatoração para Orientação a Objetos (POO) </h3>
+
+<ul>
+    <li>
+        Organização do código em pacotes (`entities` e `main`), separando a lógica de negócio da interface com o usuário.
+    </li>
+    <li>
+      Implementação da classe `Funcionario`, permitindo que o sistema trate dados de forma dinâmica e escalável através de instâncias (`new`).
+    </li>
+    <li>
+        Otimização da lógica de cálculo de bônus, removendo redundâncias e tornando o código mais limpo.
+    </li>
+</ul>
+<p>Conceitos aplicados: Classes, Atributos, Métodos, Pacotes e Instanciação de Objetos.</p>
+
+
+
