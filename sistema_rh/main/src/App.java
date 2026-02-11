@@ -13,15 +13,9 @@ public class App {
         IO.print("Digite a quantidade de horas trabalhadas: ");
         hr = sc.nextInt();
         sc.close();
-        if (cod < 4) {
-            pag = 5.50 + (40 * 5.50) / 100;
-        } else {
-            pag = 5.50;
-        }
-        ;
 
         if (cod <= 7) {
-            if (cod <= 4) {
+            if (cod < 4) {
                 pag = 5.50 + (40 * 5.50) / 100;
             } else {
                 pag = 5.50;
