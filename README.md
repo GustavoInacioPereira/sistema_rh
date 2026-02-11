@@ -6,7 +6,7 @@
 <p>Criar um programa que processe o pagamento de funcionários, diferenciando cargos de liderança (que recebem 40% de bónus sobre a hora base) de cargos operacionais.</p>
 
 <h2>📌 Versões e Evolução</h2>
-<h3>v1.0 - Lógica Estruturada (Atual):</h3>
+<h3>v1.0 - Lógica Estruturada:</h3>
 
 <ul>
     <li>
@@ -22,4 +22,16 @@
         Formatação de saída com printf (2 casas decimais).
     </li>
     <p>Conceitos aplicados: Variáveis, Arrays, Condicionais e Sintaxe Java 25.</p>
+</ul>
+
+<h3>v1.1 - Tratamento de Erros:</h3>
+
+<ul>
+    <li>
+        Adicionada camada de segurança que impede códigos inexistentes ou negativos, garantindo a integridade dos índices do Array.
+    </li>
+    <li>
+        O sistema agora solicita a reentrada de dados de forma interativa até que um ID válido seja inserido.
+    </li>
+    <p>Conceitos aplicados: Estruturas de Repetição</p>
 </ul>
