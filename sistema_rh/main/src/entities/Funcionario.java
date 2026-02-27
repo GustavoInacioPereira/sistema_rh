@@ -1,18 +1,26 @@
 package entities;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 public class Funcionario {
     private double horas_trab, salario;
     private String name;
     private Cargos cargo;
     private boolean ativo;
     private double valorHoraExtraTotal;
+    private LocalDate dataAdmissao;
 
-
-
-     public Funcionario (String name, Cargos cargo) {
+     public Funcionario (String name, Cargos cargo, String date) {
         this.name = name;
         this.cargo = cargo;
         this.salario = cargo.getSalario();
+        this.dataAdmissao = LocalDate.parse(date,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.ativo = true;
+    }
+      public Funcionario (String name, Cargos cargo, boolean isAdmittedToday) {
+        this.name = name;
+        this.cargo = cargo;
+        this.salario = cargo.getSalario();
+        this.dataAdmissao = LocalDate.now();
         this.ativo = true;
     }
 
@@ -36,6 +44,9 @@ public class Funcionario {
     }
     public Cargos getCargo() {
         return cargo;
+    }
+     public String getDataAdmissao() {
+        return dataAdmissao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     
     public void setHorasTrab(double horas_trab) {

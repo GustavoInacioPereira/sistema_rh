@@ -10,7 +10,7 @@ public class ViewFunRegister {
         for (int i = 0; i < funcionarios.size(); i++) {
             Funcionario f = funcionarios.get(i);
                 if (f.isAtivo()) {
-                    System.out.printf("Codigo do Funcionario: %d - Nome: %s - Cargo: %s - Salario: %.2f - Total de horas Extras: %.2f - Valor a receber de horas Extras: %.2f - Total a receber: %.2f %n", i, f.getName(), f.getCargo().getNameCargo(), f.getSalario(), f.getHorasTrab(), f.getValorHoraExtra(), f.getTotalAReceber());
+                    System.out.printf("Codigo do Funcionario: %d%nNome: %s%nCargo: %s%nSalario: %.2f %nData Admissão: %s%nTotal de horas Extras: %.2f%nValor a receber de horas Extras: %.2f%nTotal a receber: %.2f %n%n", i, f.getName(), f.getCargo().getNameCargo(), f.getSalario(),f.getDataAdmissao() ,f.getHorasTrab(), f.getValorHoraExtra(), f.getTotalAReceber());
                 }
                     
         }

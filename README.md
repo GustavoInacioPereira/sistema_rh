@@ -28,8 +28,8 @@
   </ul>
 </details>
 
-<details open>
-  <summary><b>v3.0 - Arquitetura Modular e Gestão de Estado (Versão Atual)</b></summary>
+<details>
+  <summary><b>v3.0 - Arquitetura Modular e Gestão de Estado</b></summary>
   <ul>
     <li><b>Single Responsibility:</b> Divisão em classes especialistas (Cadastro, Aumento, Validação).</li>
     <li><b>Soft Delete:</b> Implementação de exclusão lógica para preservar a integridade dos índices da lista.</li>
@@ -37,6 +37,17 @@
     <li><b>Coleções Dinâmicas:</b> Substituição de Arrays por <code>ArrayList</code> para escalabilidade.</li>
     <li><b>Conceitos:</b> Modularização, Listas Dinâmicas, SRP (Responsabilidade Única) e Lógica de Negócio Encapsulada.</li>
   </ul>
+</details>
+
+<details open>
+<summary><b>v3.1 - Enums Complexos e Java Time API (Versão Atual)</b></summary>
+<ul>
+<li><b>Tipagem Segura com Enums:</b> Substituição da classe de cargos por um <code>enum</code> robusto que centraliza regras de negócio (salário base e bônus de liderança de 40% calculado internamente).</li>
+<li><b>Iteração Nativa:</b> Uso do método <code>.values()</code> do Enum para geração dinâmica de menus de seleção, eliminando arrays manuais.</li>
+<li><b>Manipulação de Datas (ISO 8601):</b> Integração com <code>LocalDate</code> e <code>DateTimeFormatter</code> para parsing de datas brasileiras e registro automático de admissão (<code>now()</code>).</li>
+<li><b>Polimorfismo de Construtores:</b> Sobrecarga de construtores na classe <code>Funcionario</code> para suportar diferentes fluxos de entrada de dados.</li>
+<li><b>Conceitos:</b> Enums (objetos constantes), Java Time API, ISO 8601, Sobrecarga e Formatação de Dados.</li>
+</ul>
 </details>
 
 <hr>
