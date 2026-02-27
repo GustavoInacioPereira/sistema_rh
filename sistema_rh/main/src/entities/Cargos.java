@@ -9,8 +9,7 @@ public enum Cargos {
     COORDENADOR(3, "Coordenador", 4000.00, true),
     BALCONISTA(4,"Balconista", 2100.00, false),
     VENDEDOR(5, "Vendedor", 1900.00, false),
-    AUXILIAR_LIMPEZA(6,"Auxiliar de Limpeza", 1400.00, false),
-    JOVEM_APRENDIZ(7,"Jovem Aprendiz", 887.00, false);
+    AUXILIAR_LIMPEZA(6,"Auxiliar de Limpeza", 1400.00, false); 
 
 
     private double salario, valor_base;

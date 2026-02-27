@@ -1,10 +1,9 @@
 package application;
-
 import java.util.List;
 import java.util.Scanner;
-
 import entities.Cargos;
 import entities.Funcionario;
+import entities.Contracts;
 
 public class EmployeeRegistration {
     public static void cadastroFuncionario(Scanner sc, List<Funcionario> funcionarios) {         
@@ -17,33 +16,57 @@ public class EmployeeRegistration {
                 System.out.printf("%d - %s%n", j, Cargos.values()[j].getNameCargo());
             }
             int codCargo = sc.nextInt();
-            VerifyCod.verificaCod(codCargo, 0, 2, sc);
+            codCargo = VerifyCod.verificaCod(codCargo, 0, (Cargos.values().length - 1), sc);
+
+            System.out.printf("Digite o Regime de Trabalho: %n");
+            for (int i = 0; i < Contracts.values().length; i++) {
+                System.out.printf("%d - %s%n", i + 1 , Contracts.values()[i]);
+            }
+            int optionRegime = sc.nextInt();
+            sc.nextLine();
+            optionRegime = VerifyCod.verificaCod(optionRegime, 1, Contracts.values().length, sc);
+            Contracts escolhaRegimeContrato = Contracts.CLT;
+           switch (optionRegime) {
+                case 1:
+                    escolhaRegimeContrato = Contracts.CLT;
+                    break;
+                case 2:
+                    escolhaRegimeContrato = Contracts.PJ;
+                    break;
+                case 3:
+                    escolhaRegimeContrato = Contracts.ESTAGIO;
+                    break;                                    
+                case 4:
+                    escolhaRegimeContrato = Contracts.TEMPORARIO;
+                    break;            
+                default:
+                    break;
+            }
+
 
             System.out.printf("Digite a opção abaixo: %n1 - Admitido na data de Hoje %n2 - Admitido em outra data %n");
-            int option = sc.nextInt();
-            VerifyCod.verificaCod(option, 0, 2, sc);
+            int optionAdmissao = sc.nextInt();
+            optionAdmissao = VerifyCod.verificaCod(optionAdmissao, 1, 2, sc);
 
             
-            switch (option) {
+            switch (optionAdmissao) {
                 case 1:
                     boolean isAdmittedToday = true;
-                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], isAdmittedToday));
+                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], isAdmittedToday, escolhaRegimeContrato));
                     break;
                 case 2:
                     isAdmittedToday = false;
                     System.out.printf("Digite a data de admissão: (dd/MM/yyyy) %n");
                     sc.nextLine();
                     String date = sc.nextLine();
-                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], date));
+                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], date, escolhaRegimeContrato));
                     break;
             
                 default:
                     System.out.println("Opção Invalida");
                     break;
-            }
-           
-            
-        
-        System.out.printf("Funcionarios Cadastrados com Sucesso! %n");
+            }      
+        System.out.printf("Funcionario Cadastrado com Sucesso! %n");
     }
+    
 }

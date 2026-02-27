@@ -39,7 +39,7 @@
   </ul>
 </details>
 
-<details open>
+<details>
 <summary><b>v3.1 - Enums Complexos e Java Time API (Versão Atual)</b></summary>
 <ul>
 <li><b>Tipagem Segura com Enums:</b> Substituição da classe de cargos por um <code>enum</code> robusto que centraliza regras de negócio (salário base e bônus de liderança de 40% calculado internamente).</li>
@@ -48,6 +48,21 @@
 <li><b>Polimorfismo de Construtores:</b> Sobrecarga de construtores na classe <code>Funcionario</code> para suportar diferentes fluxos de entrada de dados.</li>
 <li><b>Conceitos:</b> Enums (objetos constantes), Java Time API, ISO 8601, Sobrecarga e Formatação de Dados.</li>
 </ul>
+</details>
+
+<details open>
+<summary><b>v3.2 - Composição de Domínio e Motor Financeiro (Versão Atual)</b></summary>
+<ul>
+<li><b>Arquitetura por Composição:</b> A classe <code>Funcionario</code> agrega múltiplos comportamentos de <code>Cargos</code> e <code>Contracts</code>.</li>
+<li><b>Motor Financeiro Dinâmico:</b>
+<ul>
+<li>Cálculo de <b>Divisor Salarial</b> baseado na carga horária do contrato (CLT, PJ, Estágio, etc).</li>
+<li>Cálculo de <b>Horas Extras</b> automático (Salário Base / (Carga Semanal × 4.5)).</li>
+<li>Gestão de <b>Descontos Contratuais</b> via taxa parametrizada em Enum.</li>
+</ul>
+</li>
+</ul>
+<p><b>Conceitos Dominados:</b> Encapsulamento Avançado, Composição de Objetos, Lógica Financeira em Enums, Tratamento de Datas e Responsabilidade Única (SRP).</p>
 </details>
 
 <hr>
