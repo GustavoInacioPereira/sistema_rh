@@ -40,7 +40,7 @@
 </details>
 
 <details>
-<summary><b>v3.1 - Enums Complexos e Java Time API (Versão Atual)</b></summary>
+<summary><b>v3.1 - Enums Complexos e Java Time API</b></summary>
 <ul>
 <li><b>Tipagem Segura com Enums:</b> Substituição da classe de cargos por um <code>enum</code> robusto que centraliza regras de negócio (salário base e bônus de liderança de 40% calculado internamente).</li>
 <li><b>Iteração Nativa:</b> Uso do método <code>.values()</code> do Enum para geração dinâmica de menus de seleção, eliminando arrays manuais.</li>
