@@ -1,3 +1,4 @@
+**Aviso de Ramificação (Branch de Estudos):** Esta branch (`feature/estudos-heranca`) é uma Prova de Conceito (PoC) técnica para fins de estudo, focada na aplicação estrita de **Herança e Polimorfismo**. A arquitetura principal e otimizada para o mundo real (utilizando o padrão de **Composição**) encontra-se na branch `main`.
 <h1>Sistema de Folha de Pagamento (RH)</h1>
 <h2>📝 Resumo </h2>
 <p>Este projeto foi criado para resolver um desafio de lógica de programação em Java. O sistema recebe os dados de um funcionário, valida o seu cargo através de um identificador e calcula o salário final com base em regras de bónus para cargos de confiança.</p>

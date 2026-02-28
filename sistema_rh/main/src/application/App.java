@@ -6,6 +6,7 @@ import java.util.Scanner;
 import entities.Funcionario;
 
 
+
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
@@ -22,8 +23,9 @@ public class App {
         for(int i = 0; i < quanFun; i++) { 
             EmployeeRegistration.cadastroFuncionario(sc, funcionarios);
         }
-         
-        ViewOption.mostraOpcao(sc, funcionarios);
+
+        AuthenticateFun.autenticarFun(sc, funcionarios);
+        
 
         sc.close();       
         } 
