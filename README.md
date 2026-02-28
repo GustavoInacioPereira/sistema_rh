@@ -51,8 +51,8 @@
 </ul>
 </details>
 
-<details open>
-<summary><b>v3.2 - Composição de Domínio e Motor Financeiro (Versão Atual)</b></summary>
+<details>
+<summary><b>v3.2 - Composição de Domínio e Motor Financeiro</b></summary>
 <ul>
 <li><b>Arquitetura por Composição:</b> A classe <code>Funcionario</code> agrega múltiplos comportamentos de <code>Cargos</code> e <code>Contracts</code>.</li>
 <li><b>Motor Financeiro Dinâmico:</b>
@@ -65,6 +65,14 @@
 </ul>
 <p><b>Conceitos Dominados:</b> Encapsulamento Avançado, Composição de Objetos, Lógica Financeira em Enums, Tratamento de Datas e Responsabilidade Única (SRP).</p>
 </details>
-
+<details open>
+  <summary><b>v3.3 - Herança, Polimorfismo e Decisão de Arquitetura (Branch Atual)</b></summary>
+  <ul>
+    <li><b>Herança (Is-A):</b> Criação da entidade <code>FuncionarioLideranca</code> estendendo a classe base <code>Funcionario</code> para injetar credenciais de acesso (Login/Senha).</li>
+    <li><b>Polimorfismo e Downcasting:</b> Inserção de objetos especializados em uma <code>List&lt;Funcionario&gt;</code> genérica e uso do operador <code>instanceof</code> para identificar e autenticar administradores em tempo de execução.</li>
+    <li><b>Decisão de Arquitetura (Trade-off):</b> Esta ramificação serve como Prova de Conceito (PoC) técnica dos pilares da OOP. Em um cenário de escalabilidade real (ex: promoção de um funcionário base para gerente), a <b>Composição</b> (injetar credenciais no objeto) seria a escolha arquitetural ideal sobre a Herança para evitar um acoplamento rígido.</li>
+  </ul>
+  <p><b>Conceitos Dominados:</b> Herança (extends), Polimorfismo de Coleções, Downcasting (instanceof) e Análise Crítica de Design de Software.</p>
+</details>
 <hr>
 <p><b>Conceitos Dominados:</b> Modularização, Coleções Dinâmicas, Validação de Fluxo, Encapsulamento Avançado e Tratamento de Estados de Objeto.</p>
