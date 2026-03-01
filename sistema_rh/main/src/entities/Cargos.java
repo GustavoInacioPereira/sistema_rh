@@ -15,6 +15,7 @@ public enum Cargos {
     private double salario, valor_base;
     private int codCargo;
     private String nameCargo;
+    private boolean isLideranca;
     private double valor_hora = 5.50;
     
         Cargos (int codCargo, String nameCargo, double salario, boolean isLideranca) {
@@ -22,6 +23,7 @@ public enum Cargos {
         this.nameCargo = nameCargo;
         this.salario = salario;
         this.valor_base = isLideranca ?  valor_hora + (40 * valor_hora) / 100 : valor_hora;
+        this.isLideranca = isLideranca;
     }
 
  
@@ -37,6 +39,9 @@ public enum Cargos {
     }
     public double getValorHora() {
         return valor_base;
+    }
+    public boolean getIsLideranca() {
+        return isLideranca;
     }
    
    

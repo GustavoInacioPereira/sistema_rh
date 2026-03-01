@@ -50,8 +50,8 @@
 </ul>
 </details>
 
-<details open>
-<summary><b>v3.2 - Composição de Domínio e Motor Financeiro (Versão Atual)</b></summary>
+<details>
+<summary><b>v3.2 - Composição de Domínio e Motor Financeiro</b></summary>
 <ul>
 <li><b>Arquitetura por Composição:</b> A classe <code>Funcionario</code> agrega múltiplos comportamentos de <code>Cargos</code> e <code>Contracts</code>.</li>
 <li><b>Motor Financeiro Dinâmico:</b>
@@ -65,5 +65,27 @@
 <p><b>Conceitos Dominados:</b> Encapsulamento Avançado, Composição de Objetos, Lógica Financeira em Enums, Tratamento de Datas e Responsabilidade Única (SRP).</p>
 </details>
 
+<details open>
+  <summary><b>v4.0 - Arquitetura em Camadas e Gestão de Acesso Dinâmico (Versão Atual)</b></summary>
+  <ul>
+    <li><b>Arquitetura Modular (Separação de Conceitos):</b> Reestruturação completa do projeto em pacotes especialistas para garantir escalabilidade e manutenção clara:
+      <ul>
+        <li><code>entities</code>: Modelos de domínio e regras puras do negócio (DNA do sistema).</li>
+        <li><code>services</code>: Motores de processos operacionais isolados (Cadastros, Promoções, Aumentos).</li>
+        <li><code>views</code>: Interface de interação e exibição para o usuário final.</li>
+        <li><code>utilities</code>: Ferramentas genéricas e reaproveitáveis de validação de dados.</li>
+      </ul>
+    </li>
+    <li><b>Segurança por Composição Dinâmica (Has-A):</b>
+      <ul>
+        <li>Desenvolvimento do módulo independente <code>Account</code>, que é injetado no objeto <code>Funcionario</code> estritamente quando o cargo exige nível de liderança.</li>
+        <li><b>Promoção em Tempo Real:</b> Capacidade do sistema de promover funcionários operacionais a líderes, injetando as credenciais de acesso durante a execução, sem a necessidade de destruir ou recriar o objeto base.</li>
+      </ul>
+    </li>
+    <li><b>Blindagem de Execução (Null Safety):</b> Implementação de travas lógicas rigorosas (<code>!= null</code>) no motor de autenticação, blindando a aplicação contra falhas críticas (<i>NullPointerException</i>) durante a varredura do banco de funcionários mistos.</li>
+  </ul>
+  <p><b>Conceitos Dominados:</b> Design de Sistemas (Arquitetura de Pacotes), Composição Dinâmica de Objetos, Separação de Responsabilidades (SoC), Prevenção de Exceções (Null Safety) e Transição de Estado.</p>
+</details>
+
 <hr>
-<p><b>Conceitos Dominados:</b> Modularização, Coleções Dinâmicas, Validação de Fluxo, Encapsulamento Avançado e Tratamento de Estados de Objeto.</p>
+<p><b>Conceitos Dominados ao Longo do Projeto:</b> Arquitetura em Camadas (MVC-Like), Composição Dinâmica de Objetos (Has-A), Princípios SOLID (SRP), Coleções Dinâmicas, Null Safety e Lógica Financeira Orientada a Objetos.</p>

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import entities.Funcionario;
+import services.EmployeeRegistration;
+import views.ViewOption;
 
 
 public class App {
@@ -15,6 +17,7 @@ public class App {
         do {
             System.out.println("Digite a Quantidade de funcionarios a serem cadastrados: ");
             quanFun = sc.nextInt();
+            sc.nextLine();
             if(quanFun < 0) {
                 System.out.println("Quantidade Invalida");
             }

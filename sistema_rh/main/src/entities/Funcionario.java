@@ -9,6 +9,7 @@ public class Funcionario {
     private double valorHoraExtraTotal;
     private LocalDate dataAdmissao;
     private Contracts contracts;
+    private Account account;
 
      public Funcionario (String name, Cargos cargo, String date, Contracts contracts) {
         this.name = name;
@@ -32,6 +33,9 @@ public class Funcionario {
 
     public double getHorasTrab() {
         return horas_trab;
+    }
+     public Account getAccount() {
+        return account;
     }
     public String getName() {
         return name;
@@ -72,6 +76,12 @@ public class Funcionario {
     }
     public void setSalarioBruto(double aumento) {
         this.salario += aumento;
+    }
+    public void setAccount(String loginDigitado, String senhaDigitada) {
+        this.account = new Account(loginDigitado, senhaDigitada);
+    }
+    public void setCargo(Cargos cargo) {
+        this.cargo = cargo;
     }
     public void setSalarioPorcentagem(double aumento) {
         double valorDoAcrescimo = (this.salario * aumento) / 100;

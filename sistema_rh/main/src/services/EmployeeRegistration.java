@@ -1,13 +1,13 @@
-package application;
+package services;
 import java.util.List;
 import java.util.Scanner;
 import entities.Cargos;
 import entities.Funcionario;
+import utilities.VerifyCod;
 import entities.Contracts;
 
 public class EmployeeRegistration {
     public static void cadastroFuncionario(Scanner sc, List<Funcionario> funcionarios) {         
-            sc.nextLine();
 
             System.out.printf("Digite seu nome: %n");
             String name = sc.nextLine();
@@ -46,26 +46,38 @@ public class EmployeeRegistration {
 
             System.out.printf("Digite a opção abaixo: %n1 - Admitido na data de Hoje %n2 - Admitido em outra data %n");
             int optionAdmissao = sc.nextInt();
+            sc.nextLine();
             optionAdmissao = VerifyCod.verificaCod(optionAdmissao, 1, 2, sc);
 
-            
+            Funcionario funcionario = null;
             switch (optionAdmissao) {
                 case 1:
                     boolean isAdmittedToday = true;
-                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], isAdmittedToday, escolhaRegimeContrato));
+                    funcionario = new Funcionario(name, Cargos.values()[codCargo], isAdmittedToday, escolhaRegimeContrato);
                     break;
                 case 2:
                     isAdmittedToday = false;
                     System.out.printf("Digite a data de admissão: (dd/MM/yyyy) %n");
                     sc.nextLine();
                     String date = sc.nextLine();
-                    funcionarios.add(new Funcionario(name, Cargos.values()[codCargo], date, escolhaRegimeContrato));
+                    funcionario = new Funcionario(name, Cargos.values()[codCargo], date, escolhaRegimeContrato);
                     break;
             
                 default:
                     System.out.println("Opção Invalida");
                     break;
-            }      
+            }    
+            
+           
+                if(funcionario.getCargo().getIsLideranca()) {
+                    System.out.printf("Cargo de Liderança Detectado %nRealize cadastro para acessar o Painel Administrativo %n");
+                    System.out.printf("Digite o Login: %n");
+                    String loginDigitado = sc.nextLine();
+                    System.out.printf("Digite a Senha: %n");
+                    String senhaDigitada = sc.nextLine();
+                    funcionario.setAccount(loginDigitado, senhaDigitada);
+                }
+        funcionarios.add(funcionario);
         System.out.printf("Funcionario Cadastrado com Sucesso! %n");
     }
     

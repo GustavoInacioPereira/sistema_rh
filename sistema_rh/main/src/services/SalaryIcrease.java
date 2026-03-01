@@ -1,8 +1,9 @@
-package application;
+package services;
 
 import java.util.List;
 import java.util.Scanner;
 import entities.Funcionario;
+import utilities.VerifyCodFun;
 
 public class SalaryIcrease {
     public static void aumentoSalario(Scanner sc, List<Funcionario> funcionarios, int codFun) {
