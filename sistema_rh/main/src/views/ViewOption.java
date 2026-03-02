@@ -5,20 +5,19 @@ import java.util.Scanner;
 import entities.Funcionario;
 import services.EmployeeRegistration;
 import services.Promotion;
-import services.SalaryIcrease;
+import services.SalaryIncrease;
 import utilities.VerifyCod;
 import utilities.VerifyCodFun;
+import utilities.VerifyType;
 
 public class ViewOption {
-    static int escolhaOpcao;
 
     public static void mostraOpcao(Scanner sc, List<Funcionario> funcionarios) {
         int codFun = 0;
 
         System.out.printf("Digite a Opção %n1 - Acessar Painel Administrativo %n2 - Ver Informações Publicas %n3 - Sair%n");
-        escolhaOpcao = sc.nextInt();
-        sc.nextLine();
-        escolhaOpcao = VerifyCod.verificaCod(escolhaOpcao, 1, 3, sc);
+        
+        int escolhaOpcao = VerifyCod.verificaCod( 1, 3, sc);
 
         switch (escolhaOpcao) {
             case 1:
@@ -32,14 +31,14 @@ public class ViewOption {
 
                             System.out.printf(
                                     "Digite a opção desejada: %n1 - Ver todos os funcionarios cadastrados %n2 - Aumento para um Funcionario %n3 - Excluir um Funcionario cadastrado %n4 - Dar Horas Extras %n5 - Cadastrar Novo Funcionario %n6 - Promoção %n7 - Sair %n");
-                            escolhaOpcao = sc.nextInt();
+                                 escolhaOpcao = VerifyCod.verificaCod( 1, 7, sc);
                             switch (escolhaOpcao) {
                                 case 1:
                                     ViewFunRegister.verFunCadastrado(sc, funcionarios);
                                     break;
 
                                 case 2:
-                                    SalaryIcrease.aumentoSalario(sc, funcionarios, codFun);
+                                    SalaryIncrease.aumentoSalario(sc, funcionarios, codFun);
                                     break;
 
                                 case 3:
@@ -51,13 +50,13 @@ public class ViewOption {
                                 case 4:
                                     codFun = VerifyCodFun.verificaCodFun(sc, codFun, funcionarios);
                                     System.out.println("Digite a Quantidade de Horas extras: ");
-                                    double horasExtras = sc.nextDouble();
+                                    double horasExtras = VerifyType.lerDouble(sc, "Valor Inválido");
                                     funcionarios.get(codFun).setHorasTrab(horasExtras);
 
                                     break;
 
                                 case 5:
-                                    EmployeeRegistration.cadastroFuncionario(sc, funcionarios);
+                                    EmployeeRegistration.cadastroFuncionario(sc, funcionarios, 1);
                                     break;
 
                                 case 6:

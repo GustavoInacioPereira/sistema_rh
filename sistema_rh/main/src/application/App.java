@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import entities.Funcionario;
 import services.EmployeeRegistration;
+import utilities.VerifyCod;
 import views.ViewOption;
 
 
@@ -14,20 +15,11 @@ public class App {
         int quanFun;
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 
-        do {
-            System.out.println("Digite a Quantidade de funcionarios a serem cadastrados: ");
-            quanFun = sc.nextInt();
-            sc.nextLine();
-            if(quanFun < 0) {
-                System.out.println("Quantidade Invalida");
-            }
-        } while(quanFun < 0);
-        for(int i = 0; i < quanFun; i++) { 
-            EmployeeRegistration.cadastroFuncionario(sc, funcionarios);
-        }
-         
+        System.out.println("Digite a Quantidade de funcionarios a serem cadastrados: ");
+        quanFun = VerifyCod.verificaCod(0, sc);
+      
+        EmployeeRegistration.cadastroFuncionario(sc, funcionarios, quanFun);        
         ViewOption.mostraOpcao(sc, funcionarios);
-
         sc.close();       
         } 
 }

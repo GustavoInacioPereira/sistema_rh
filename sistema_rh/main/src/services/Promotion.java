@@ -17,9 +17,7 @@ public class Promotion {
         for (int l = 0; l < Cargos.values().length; l++) {
             System.out.printf("%d - %s%n", l, Cargos.values()[l].getNameCargo());
         }
-        int codCargo = sc.nextInt();
-        sc.nextLine();
-        codCargo = VerifyCod.verificaCod(codCargo, 0, Cargos.values().length, sc);
+        int codCargo = VerifyCod.verificaCod(0, Cargos.values().length, sc);
         f.setCargo(Cargos.values()[codCargo]);
         if (f.getCargo().getIsLideranca()) {
             System.out.printf("Cargo de Liderança Detectado %nRealize cadastro para acessar o Painel Administrativo %n");

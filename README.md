@@ -65,8 +65,8 @@
 <p><b>Conceitos Dominados:</b> Encapsulamento Avançado, Composição de Objetos, Lógica Financeira em Enums, Tratamento de Datas e Responsabilidade Única (SRP).</p>
 </details>
 
-<details open>
-  <summary><b>v4.0 - Arquitetura em Camadas e Gestão de Acesso Dinâmico (Versão Atual)</b></summary>
+<details>
+  <summary><b>v4.0 - Arquitetura em Camadas e Gestão de Acesso Dinâmico</b></summary>
   <ul>
     <li><b>Arquitetura Modular (Separação de Conceitos):</b> Reestruturação completa do projeto em pacotes especialistas para garantir escalabilidade e manutenção clara:
       <ul>
@@ -85,6 +85,17 @@
     <li><b>Blindagem de Execução (Null Safety):</b> Implementação de travas lógicas rigorosas (<code>!= null</code>) no motor de autenticação, blindando a aplicação contra falhas críticas (<i>NullPointerException</i>) durante a varredura do banco de funcionários mistos.</li>
   </ul>
   <p><b>Conceitos Dominados:</b> Design de Sistemas (Arquitetura de Pacotes), Composição Dinâmica de Objetos, Separação de Responsabilidades (SoC), Prevenção de Exceções (Null Safety) e Transição de Estado.</p>
+</details>
+<details open>
+  <summary><b>v4.1 - Blindagem e Tratamento de Erros (Versão Atual) </b></summary>
+  <ul>
+    <li><b>Tratamento de Exceções (<code>try/catch</code>):</b> Captura cirúrgica de erros de tipagem para evitar travamentos quando o usuário insere textos em campos estritamente numéricos.</li>
+    <li><b>Gerenciamento de Buffer:</b> Uso estratégico do <code>sc.nextLine()</code> dentro dos blocos <code>catch</code> para limpar a memória do <code>Scanner</code> e evitar os temidos loops infinitos letais.</li>
+    <li><b>Sobrecarga de Métodos (<i>Overloading</i>):</b> Criação da classe utilitária de blindagem com métodos de mesmo propósito, mas assinaturas diferentes (<code>lerInt</code>, <code>lerDouble</code>), centralizando a lógica de leitura segura.</li>
+    <li><b>Micro-Loops de Retenção:</b> Implementação de laços <code>while(true)</code> dentro dos validadores, prendendo o fluxo na mesma etapa até que um dado válido seja fornecido, preservando a navegação do usuário (UX).</li>
+    <li><b>Refatoração Defensiva:</b> Aplicação do novo motor de validação em módulos críticos do sistema, como <code>EmployeeRegistration</code> e <code>SalaryIncrease</code>.</li>
+  </ul>
+  <p><b>Conceitos Dominados:</b> Try/Catch, Limpeza de Buffer, Sobrecarga de Métodos, Programação Defensiva e Micro-loops Arquiteturais.</p>
 </details>
 
 <hr>
