@@ -12,17 +12,15 @@ public enum Cargos {
     AUXILIAR_LIMPEZA(6,"Auxiliar de Limpeza", 1400.00, false); 
 
 
-    private double salario, valor_base;
+    private double salario;
     private int codCargo;
     private String nameCargo;
     private boolean isLideranca;
-    private double valor_hora = 5.50;
     
         Cargos (int codCargo, String nameCargo, double salario, boolean isLideranca) {
         this.codCargo = codCargo;
         this.nameCargo = nameCargo;
         this.salario = salario;
-        this.valor_base = isLideranca ?  valor_hora + (40 * valor_hora) / 100 : valor_hora;
         this.isLideranca = isLideranca;
     }
 
@@ -36,9 +34,6 @@ public enum Cargos {
     }
     public double getSalario() {
         return salario;
-    }
-    public double getValorHora() {
-        return valor_base;
     }
     public boolean getIsLideranca() {
         return isLideranca;

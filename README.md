@@ -86,8 +86,8 @@
   </ul>
   <p><b>Conceitos Dominados:</b> Design de Sistemas (Arquitetura de Pacotes), Composição Dinâmica de Objetos, Separação de Responsabilidades (SoC), Prevenção de Exceções (Null Safety) e Transição de Estado.</p>
 </details>
-<details open>
-  <summary><b>v4.1 - Blindagem e Tratamento de Erros (Versão Atual) </b></summary>
+<details>
+  <summary><b>v4.1 - Blindagem e Tratamento de Erros  </b></summary>
   <ul>
     <li><b>Tratamento de Exceções (<code>try/catch</code>):</b> Captura cirúrgica de erros de tipagem para evitar travamentos quando o usuário insere textos em campos estritamente numéricos.</li>
     <li><b>Gerenciamento de Buffer:</b> Uso estratégico do <code>sc.nextLine()</code> dentro dos blocos <code>catch</code> para limpar a memória do <code>Scanner</code> e evitar os temidos loops infinitos letais.</li>
@@ -98,5 +98,18 @@
   <p><b>Conceitos Dominados:</b> Try/Catch, Limpeza de Buffer, Sobrecarga de Métodos, Programação Defensiva e Micro-loops Arquiteturais.</p>
 </details>
 
+<details open>
+<summary><b>v4.2 - Padrões de Projeto (Strategy) e Princípios SOLID (Versão Atual)</b></summary>
+<ul>
+<li><b>Strategy Pattern (Padrão Estratégia):</b> Extração da lógica matemática (como descontos tributários e bônus de horas extras) de dentro da entidade <code>Funcionario</code> para classes especialistas (ex: <code>DiscountCLT</code>, <code>OvertimePJ</code>) através do uso de <b>Interfaces</b> (<code>RulesDiscount</code>, <code>RulesPayOvertime</code>).</li>
+<li><b>Injeção de Dependência via Enum:</b> As calculadoras com as regras de negócio passaram a ser instanciadas e injetadas diretamente dentro do Enum <code>Contracts</code>, associando comportamentos matemáticos complexos a cada regime de trabalho de forma elegante e nativa (Polimorfismo).</li>
+<li><b>Open/Closed Principle (OCP - SOLID):</b> A arquitetura agora permite que o sistema seja escalado com segurança. Para adicionar uma nova regra do governo (ex: Jovem Aprendiz), basta criar a classe correspondente e plugar no Enum, sem alterar o motor principal do sistema ou criar cascatas de <code>if/else</code>.</li>
+<li><b>Eliminação da Recursão Infinita:</b> Remoção de chamadas recursivas inadequadas do método de menu (<code>mostraOpcao</code> chamando a si mesmo), que causavam empilhamento de memória e travamento do console.</li>
+
+</ul>
+<p><b>Conceitos Dominados:</b> Padrão Strategy, Interfaces, Injeção de Dependência, Polimorfismo, Princípios SOLID (SRP e OCP) e Clean Architecture.</p>
+</details>
+
 <hr>
-<p><b>Conceitos Dominados ao Longo do Projeto:</b> Arquitetura em Camadas (MVC-Like), Composição Dinâmica de Objetos (Has-A), Princípios SOLID (SRP), Coleções Dinâmicas, Null Safety e Lógica Financeira Orientada a Objetos.</p>
+<p><b>Conceitos Dominados ao Longo do Projeto:</b> Arquitetura em Camadas (MVC-Like), Composição Dinâmica de Objetos (Has-A), Princípios SOLID (SRP, OCP), Design Patterns (Strategy), Injeção de Dependência, Coleções Dinâmicas, Null Safety e Lógica Financeira Orientada a Objetos.</p>
+
