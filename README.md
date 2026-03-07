@@ -98,8 +98,8 @@
   <p><b>Conceitos Dominados:</b> Try/Catch, Limpeza de Buffer, Sobrecarga de Métodos, Programação Defensiva e Micro-loops Arquiteturais.</p>
 </details>
 
-<details open>
-<summary><b>v4.2 - Padrões de Projeto (Strategy) e Princípios SOLID (Versão Atual)</b></summary>
+<details>
+<summary><b>v4.2 - Padrões de Projeto (Strategy) e Princípios SOLID</b></summary>
 <ul>
 <li><b>Strategy Pattern (Padrão Estratégia):</b> Extração da lógica matemática (como descontos tributários e bônus de horas extras) de dentro da entidade <code>Funcionario</code> para classes especialistas (ex: <code>DiscountCLT</code>, <code>OvertimePJ</code>) através do uso de <b>Interfaces</b> (<code>RulesDiscount</code>, <code>RulesPayOvertime</code>).</li>
 <li><b>Injeção de Dependência via Enum:</b> As calculadoras com as regras de negócio passaram a ser instanciadas e injetadas diretamente dentro do Enum <code>Contracts</code>, associando comportamentos matemáticos complexos a cada regime de trabalho de forma elegante e nativa (Polimorfismo).</li>
@@ -108,6 +108,12 @@
 
 </ul>
 <p><b>Conceitos Dominados:</b> Padrão Strategy, Interfaces, Injeção de Dependência, Polimorfismo, Princípios SOLID (SRP e OCP) e Clean Architecture.</p>
+</details>
+<details open>
+    <summary><b>Versão 4.2.1 - Tratamento de Erro com datas (Atual)</b></summary>
+    <ul>
+        <li><b>Verificador de Datas:</b> Implementação de um verificador <code>VerifyDateTime</code> como método da <code>VerifyType</code>, Adicionando mais uma camada de proteção ao codigo</li>
+    </ul>
 </details>
 
 <hr>

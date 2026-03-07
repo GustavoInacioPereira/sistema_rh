@@ -13,11 +13,11 @@ public class Funcionario {
     private Contracts contracts;
     private Account account;
 
-    public Funcionario(String name, Cargos cargo, String date, Contracts contracts) {
+    public Funcionario(String name, Cargos cargo, LocalDate date, Contracts contracts) {
         this.name = name;
         this.cargo = cargo;
         this.salario = cargo.getSalario();
-        this.dataAdmissao = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.dataAdmissao = date;
         this.contracts = contracts;
         this.ativo = true;
     }

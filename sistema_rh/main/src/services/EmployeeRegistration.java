@@ -1,10 +1,12 @@
 package services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 import entities.Cargos;
 import entities.Funcionario;
 import utilities.VerifyCod;
+import utilities.VerifyType;
 import entities.Contracts;
 
 public class EmployeeRegistration {
@@ -55,8 +57,7 @@ public class EmployeeRegistration {
                 case 2:
                     isAdmittedToday = false;
                     System.out.printf("Digite a data de admissão: (dd/MM/yyyy) %n");
-                    sc.nextLine();
-                    String date = sc.nextLine();
+                    LocalDate date = VerifyType.verifyDate(sc);
                     funcionario = new Funcionario(name, Cargos.values()[codCargo], date, escolhaRegimeContrato);
                     break;
 
