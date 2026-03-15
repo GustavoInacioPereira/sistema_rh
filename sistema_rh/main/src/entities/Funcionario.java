@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Funcionario {
+    private Integer id;
     private double horas_trab, salario;
     private String name;
     private Cargos cargo;
@@ -13,7 +14,8 @@ public class Funcionario {
     private Contracts contracts;
     private Account account;
 
-    public Funcionario(String name, Cargos cargo, LocalDate date, Contracts contracts) {
+    public Funcionario(Integer id, String name, Cargos cargo, LocalDate date, Contracts contracts) {
+        this.id = id;
         this.name = name;
         this.cargo = cargo;
         this.salario = cargo.getSalario();
@@ -22,17 +24,25 @@ public class Funcionario {
         this.ativo = true;
     }
 
-    public Funcionario(String name, Cargos cargo, boolean isAdmittedToday, Contracts contracts) {
+    //Constructor do Banco de Dados para a RAM
+    public Funcionario(Integer id, Double horas_trab, Double salario, String name, Cargos cargo, boolean ativo, Double valorHoraExtraTotal, LocalDate dataAdmissao, Contracts contracts, Account account) {
+        this.id = id;
         this.name = name;
+        this.salario = salario;
+        this.horas_trab = horas_trab;
+        this.valorHoraExtraTotal = valorHoraExtraTotal;
+        this.ativo = ativo;
+        this.dataAdmissao = dataAdmissao;
         this.cargo = cargo;
-        this.salario = cargo.getSalario();
-        this.dataAdmissao = LocalDate.now();
         this.contracts = contracts;
-        this.ativo = true;
+        this.account = account;
     }
 
     public double getHorasTrab() {
         return horas_trab;
+    }
+    public Integer getId() {
+        return id;
     }
 
     public Account getAccount() {
@@ -52,7 +62,9 @@ public class Funcionario {
     }
 
     public double getTotalAReceber() {
-        return (salario + valorHoraExtraTotal) - getDescontoContratual();
+        double valorExtraValido = this.contracts.isPermiteHoraExtra() ? this.valorHoraExtraTotal : 0.0; 
+        return (this.salario + valorExtraValido) - getDescontoContratual();
+
     }
 
     public double getValorHoraExtra() {
@@ -72,7 +84,12 @@ public class Funcionario {
     }
 
     public double getValorHoraBase() {
-        return this.salario / (this.contracts.getCargaSemanal() * 4.5);
+        int carga = this.contracts.getCargaSemanal();      
+        if (carga == 0) {
+            return 0.0; 
+        }
+
+        return this.salario / (carga * 4.5);
     }
 
     public void setHorasTrab(double horas_trab) {
@@ -92,6 +109,7 @@ public class Funcionario {
 
     public void setCargo(Cargos cargo) {
         this.cargo = cargo;
+        this.salario = cargo.getSalario();
     }
 
     public void setSalarioPorcentagem(double aumento) {
@@ -105,6 +123,10 @@ public class Funcionario {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

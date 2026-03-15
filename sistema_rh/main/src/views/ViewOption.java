@@ -2,17 +2,20 @@ package views;
 
 import java.util.List;
 import java.util.Scanner;
+
+import entities.Cargos;
 import entities.Funcionario;
+import services.AuthService;
+import services.DeleteEmployee;
 import services.EmployeeRegistration;
+import services.ExtraHour;
 import services.Promotion;
 import services.SalaryIncrease;
 import utilities.VerifyCod;
-import utilities.VerifyCodFun;
-import utilities.VerifyType;
 
 public class ViewOption {
 
-    public static void mostraOpcao(Scanner sc, List<Funcionario> funcionarios) {
+    public static void mostraOpcao(Scanner sc, List<Funcionario> funcionarios, List<Cargos> cargos) {
         int codFun = 0;
         int escolhaOpcao;
 
@@ -29,55 +32,44 @@ public class ViewOption {
                     System.out.printf("Digite a Senha: %n");
                     String senhaDigitada = sc.nextLine();
 
-                    boolean logado = false;
 
-                    for (int i = 0; i < funcionarios.size(); i++) {
-                        if (funcionarios.get(i).getAccount() != null && funcionarios.get(i).getAccount().validar(loginDigitado, senhaDigitada)) {
-                            logado = true;
-                            int escolhaAdmin;
+                    boolean logado = AuthService.autenticarLider(loginDigitado, senhaDigitada);
 
-                            do {
-                                System.out.printf("%n=== PAINEL ADMINISTRATIVO ===%n");
-                                System.out.printf(
-                                        "1 - Ver todos os funcionarios cadastrados %n2 - Aumento para um Funcionario %n3 - Excluir um Funcionario cadastrado %n4 - Dar Horas Extras %n5 - Cadastrar Novo Funcionario %n6 - Promoção %n7 - Voltar ao Menu Principal %n");
-                                escolhaAdmin = VerifyCod.verificaCod(1, 7, sc);
+                    if (logado) {
+                        int escolhaAdmin;
+                        do {
+                            System.out.printf("%n=== PAINEL ADMINISTRATIVO ===%n");
+                            System.out.printf(
+                                    "1 - Ver todos os funcionarios cadastrados %n2 - Aumento para um Funcionario %n3 - Excluir um Funcionario cadastrado %n4 - Dar Horas Extras %n5 - Cadastrar Novo Funcionario %n6 - Promoção %n7 - Voltar ao Menu Principal %n");
+                            escolhaAdmin = VerifyCod.verificaCod(1, 7, sc);
 
-                                switch (escolhaAdmin) {
-                                    case 1:
-                                        ViewFunRegister.verFunCadastrado(sc, funcionarios);
-                                        break;
-                                    case 2:
-                                        SalaryIncrease.aumentoSalario(sc, funcionarios, codFun);
-                                        break;
-                                    case 3:
-                                        codFun = VerifyCodFun.verificaCodFun(sc, codFun, funcionarios);
-                                        funcionarios.get(codFun).setAtivo(false);
-                                        System.out.println("Funcionário excluído!");
-                                        break;
-                                    case 4:
-                                        codFun = VerifyCodFun.verificaCodFun(sc, codFun, funcionarios);
-                                        System.out.println("Digite a Quantidade de Horas extras: ");
-                                        double horasExtras = VerifyType.lerDouble(sc, "Valor Inválido");
-                                        funcionarios.get(codFun).setHorasTrab(horasExtras);
-                                        break;
-                                    case 5:
-                                        EmployeeRegistration.cadastroFuncionario(sc, funcionarios, 1);
-                                        break;
-                                    case 6:
-                                        Promotion.promocao(codFun, funcionarios, sc);
-                                        break;
-                                    case 7:
-                                        System.out.println("Saindo do painel admin...");
-                                        break;
-                                }
-                            } while (escolhaAdmin != 7);
+                            switch (escolhaAdmin) {
+                                case 1:
+                                    ViewFunRegister.verFunCadastrado(sc, funcionarios);
+                                    break;
+                                case 2:
+                                    SalaryIncrease.aumentoSalario(sc, funcionarios, codFun);
+                                    break;
+                                case 3:
+                                    DeleteEmployee.delete(sc, funcionarios);
+                                    break;
+                                case 4:
+                                    ExtraHour.set(sc, funcionarios);
+                                    break;
+                                case 5:
+                                    EmployeeRegistration.cadastroFuncionario(sc, funcionarios, cargos, 1);
+                                    break;
+                                case 6:
+                                    Promotion.promocao(codFun, funcionarios, cargos, sc);
+                                    break;
+                                case 7:
+                                    System.out.println("Saindo do painel admin...");
+                                    break;
+                            }
+                        } while (escolhaAdmin != 7);
 
-                            break;
-                        }
-                    }
-
-                    if (!logado) {
-                        System.out.println("Login/Senha incorretos ou usuário sem privilégios.");
+                    } else {
+                        System.out.println("ACESSO NEGADO: Login/Senha incorretos ou usuário sem privilégios.");
                     }
                     break;
 
@@ -89,6 +81,6 @@ public class ViewOption {
                     System.out.println("Encerrando o sistema...");
                     break;
             }
-        } while (escolhaOpcao != 3); 
+        } while (escolhaOpcao != 3);
     }
 }

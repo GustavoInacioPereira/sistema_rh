@@ -4,6 +4,6 @@ import services.rules.RulesDiscount;
 public class DiscountPJ implements RulesDiscount {
     @Override
     public double calcularDesconto(double salarioBruto) {
-        return salarioBruto;
+        return 0.0;
     }
 }

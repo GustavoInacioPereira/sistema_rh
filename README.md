@@ -105,15 +105,29 @@
 <li><b>Injeção de Dependência via Enum:</b> As calculadoras com as regras de negócio passaram a ser instanciadas e injetadas diretamente dentro do Enum <code>Contracts</code>, associando comportamentos matemáticos complexos a cada regime de trabalho de forma elegante e nativa (Polimorfismo).</li>
 <li><b>Open/Closed Principle (OCP - SOLID):</b> A arquitetura agora permite que o sistema seja escalado com segurança. Para adicionar uma nova regra do governo (ex: Jovem Aprendiz), basta criar a classe correspondente e plugar no Enum, sem alterar o motor principal do sistema ou criar cascatas de <code>if/else</code>.</li>
 <li><b>Eliminação da Recursão Infinita:</b> Remoção de chamadas recursivas inadequadas do método de menu (<code>mostraOpcao</code> chamando a si mesmo), que causavam empilhamento de memória e travamento do console.</li>
-
 </ul>
 <p><b>Conceitos Dominados:</b> Padrão Strategy, Interfaces, Injeção de Dependência, Polimorfismo, Princípios SOLID (SRP e OCP) e Clean Architecture.</p>
 </details>
-<details open>
-    <summary><b>Versão 4.2.1 - Tratamento de Erro com datas (Atual)</b></summary>
+
+<details>
+    <summary><b>Versão 4.2.1 - Tratamento de Erro com datas</b></summary>
     <ul>
         <li><b>Verificador de Datas:</b> Implementação de um verificador <code>VerifyDate</code> como método da <code>VerifyType</code>, Adicionando mais uma camada de proteção ao codigo</li>
     </ul>
+</details>
+
+<details open>
+  <summary><b>v5.0 - Persistência em Banco de Dados (JDBC), Segurança e Refatoração Estrutural Geral (Atual) </b></summary>
+  <ul>
+    <li><b>Integração com Banco de Dados Relacional (JDBC) e Segurança de Credenciais:</b> Transição do armazenamento volátil em memória (RAM) para persistência real utilizando MySQL e a API JDBC. As credenciais de acesso foram isoladas em arquivos <code>.properties</code> e protegidas via <code>.gitignore</code>. Um template (<code>db.example.properties</code>) foi disponibilizado para configuração segura do ambiente.</li>
+    <li><b>Database Seeding e Estruturação (Schema):</b> Criação de um script SQL de inicialização contendo a estrutura completa das tabelas do banco de dados e a injeção (<i>seed</i>) de um usuário padrão de Liderança. Isso garante que o sistema possua um administrador pronto para o primeiro login assim que o projeto for clonado.</li>
+    <li><b>Refatoração Estrutural Geral (Cross-Layer):</b> Reescrita profunda da arquitetura do sistema para suportar operações CRUD. As <code>Entities</code> foram ajustadas para mapeamento de banco (IDs), o fluxo de inicialização (<code>App</code>) foi alterado para carregar o estado via <code>ReadDB</code>, e a camada de <code>services</code> abandonou a manipulação de listas locais para executar transações diretas no banco de dados via <code>PreparedStatement</code>.</li>
+    <li><b>Autenticação Segura e Escalável (Data Fetching Otimizado):</b> Criação do <code>AuthService</code>. A validação de login da liderança passou a ser feita diretamente no motor do banco de dados via query SQL (<code>SELECT INNER JOIN</code>), resolvendo gargalos críticos de performance ao impedir o carregamento desnecessário de objetos na memória RAM.</li>
+    <li><b>Prevenção de Passivos Trabalhistas (Blindagem de Domínio):</b> Inserção da propriedade lógica <code>permiteHoraExtra</code> no Enum <code>Contracts</code>. O sistema agora bloqueia automaticamente o registro de horas extras para regimes incompatíveis (como PJ), blindando a aplicação contra geração de provas de vínculo empregatício indevidas.</li>
+    <li><b>Matemática Defensiva e Sobrecarga de Enums:</b> Implementação de sobrecarga de construtores no Enum de Contratos para suportar regimes sem jornada fixa (Carga Semanal = 0). O cálculo de hora-base foi blindado para evitar falhas críticas de sistema geradas por divisão por zero (<i>ArithmeticException</i>).</li>
+    <li><b>UI Dinâmica e Ocultação Condicional:</b> Refatoração da visualização de dados (<code>ViewFunRegister</code>) utilizando condicionais atreladas às regras do contrato. O sistema agora oculta automaticamente variáveis irrelevantes da tela (como total de horas extras) dependendo do regime de trabalho do funcionário.</li>
+  </ul>
+  <p><b>Conceitos Dominados:</b> JDBC (Java Database Connectivity), Operações CRUD, Refatoração Sistêmica, Consultas SQL (Queries e Joins), Autenticação no Back-End, Proteção de Domínio (DDD), Segurança de Credenciais (.gitignore) e Database Seeding.</p>
 </details>
 
 <hr>
